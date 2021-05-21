@@ -19,5 +19,9 @@
 */
 
 import Route from '@ioc:Adonis/Core/Route'
+import { UserFactory } from 'Database/factories'
 
 Route.get('/', 'UsersController.index')
+Route.get('/create-user', async () => {
+  UserFactory.create()
+})
