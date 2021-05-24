@@ -25,3 +25,5 @@ Route.get('/', 'UsersController.index')
 Route.get('/create-user', async () => {
   UserFactory.create()
 })
+Route.get('/user/:id', 'UsersController.show')
+Route.post('/register', 'UsersController.register')
