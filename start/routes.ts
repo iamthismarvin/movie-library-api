@@ -21,9 +21,22 @@
 import Route from '@ioc:Adonis/Core/Route'
 import { UserFactory } from 'Database/factories'
 
-Route.get('/', 'UsersController.index')
-Route.get('/create-user', async () => {
-  UserFactory.create()
+// General
+Route.get('/', () => {
+  return 'Movie Library API by Marvin Parada. (https://marvin.dev)'
 })
-Route.get('/user/:id', 'UsersController.show')
-Route.post('/register', 'UsersController.register')
+
+// Users
+Route.group(() => {
+  Route.get('/', 'UsersController.index')
+  Route.post('/', 'UsersController.store')
+  Route.get('/:id', 'UsersController.show')
+  Route.delete('/:id', 'UsersController.destroy')
+}).prefix('/users')
+
+// Factories
+Route.group(() => {
+  Route.post('/single-user', async () => {
+    UserFactory.create()
+  })
+}).prefix('/factories')
