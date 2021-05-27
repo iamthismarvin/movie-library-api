@@ -34,6 +34,14 @@ Route.group(() => {
   Route.delete('/:id', 'UsersController.destroy')
 }).prefix('/users')
 
+// Movies
+Route.group(() => {
+  Route.get('/', 'MoviesController.index')
+  Route.post('/', 'MoviesController.store')
+  Route.get('/:id', 'MoviesController.show')
+  Route.delete('/:id', 'MoviesController.destroy')
+}).prefix('/movies')
+
 // Factories
 Route.group(() => {
   Route.post('/single-user', async () => {

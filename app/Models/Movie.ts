@@ -1,8 +1,8 @@
 import { DateTime } from 'luxon'
 import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
-import { Roles } from 'Contracts/types'
+import { Info, Format } from 'Contracts/types'
 
-export default class User extends BaseModel {
+export default class Movie extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
@@ -13,14 +13,17 @@ export default class User extends BaseModel {
   public updatedAt: DateTime
 
   @column()
-  public username: string
+  public purchasedAt: Date
 
   @column()
-  public password: string
+  public libraryID: string
 
   @column()
-  public displayName: string
+  public notes: string
 
   @column()
-  public role: Roles
+  public info: Info
+
+  @column()
+  public format: Format
 }

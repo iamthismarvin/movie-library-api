@@ -1,5 +1,5 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
-import { Roles } from 'Contracts/enums'
+import { Roles } from 'Contracts/types'
 
 export default class Users extends BaseSchema {
   protected tableName = 'users'
