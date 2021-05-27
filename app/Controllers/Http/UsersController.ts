@@ -12,11 +12,10 @@ export default class UsersController {
   }
 
   public async store({ request }) {
-    const user = await User.create({
+    await User.create({
       username: request.input('username'),
       password: request.input('password'),
     })
-    return user
   }
 
   public async destroy({ params }) {
