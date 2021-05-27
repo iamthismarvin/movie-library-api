@@ -9,6 +9,7 @@ export default class MoviesController {
   public async store({ request }) {
     await Movie.create({
       purchasedAt: request.input('purchased_at'),
+      purchaseLocation: request.input('purchase_location'),
       libraryID: request.input('library_id'),
       notes: request.input('notes'),
       info: request.input('info'),

@@ -16,6 +16,9 @@ export default class Movie extends BaseModel {
   public purchasedAt: Date
 
   @column()
+  public purchaseLocation: string
+
+  @column()
   public libraryID: string
 
   @column()

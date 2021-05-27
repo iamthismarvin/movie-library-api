@@ -12,6 +12,7 @@ export const UserFactory = Factory.define(User, ({ faker }) => {
 export const MovieFactory = Factory.define(Movie, ({ faker }) => {
   return {
     purchased_at: faker.date.past(),
+    purchase_location: faker.lorem.word(),
     library_id: `M-${faker.datatype.number()}`,
     notes: faker.lorem.paragraph(),
     info: {
