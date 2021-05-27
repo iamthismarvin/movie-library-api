@@ -1,5 +1,6 @@
 import { DateTime } from 'luxon'
 import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
+import { Roles } from 'Contracts/enums'
 
 export default class User extends BaseModel {
   @column({ isPrimary: true })
@@ -16,4 +17,10 @@ export default class User extends BaseModel {
 
   @column()
   public password: string
+
+  @column()
+  public displayName: string
+
+  @column()
+  public role: Roles
 }
