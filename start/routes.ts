@@ -19,7 +19,7 @@
 */
 
 import Route from '@ioc:Adonis/Core/Route'
-import { UserFactory } from 'Database/factories'
+import { MovieFactory, UserFactory } from 'Database/factories'
 
 // General
 Route.get('/', () => {
@@ -46,5 +46,8 @@ Route.group(() => {
 Route.group(() => {
   Route.post('/single-user', async () => {
     UserFactory.create()
+  })
+  Route.post('/single-movie', async () => {
+    MovieFactory.create()
   })
 }).prefix('/factories')
