@@ -234,6 +234,6 @@ Example:
 }
 ```
 
-| Route         | Request Method | Response                                    |
-| :------------ | :------------- | :------------------------------------------ |
-| `/movies/:id` | `DELETE`       | Deletes user with `id` from `movies` table. |
+| Route         | Request Method | Response                                     |
+| :------------ | :------------- | :------------------------------------------- |
+| `/movies/:id` | `DELETE`       | Deletes movie with `id` from `movies` table. |
