@@ -12,9 +12,10 @@ export default class UsersController {
   }
 
   public async store({ request }) {
+    const { username, password } = request.all()
     await User.create({
-      username: request.input('username'),
-      password: request.input('password'),
+      username,
+      password,
     })
   }
 

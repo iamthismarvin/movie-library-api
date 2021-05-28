@@ -11,6 +11,7 @@
 - [Notes](#Notes)
 - [API](#API)
   - [General](###General)
+  - [Authorization](###Authorization)
   - [Users](###Users)
   - [Movies](###Movies)
 
@@ -34,21 +35,19 @@ This is project is still under development.
 
 ## API
 
-| Route         | Request Method | Group   | Response                                     |
-| :------------ | :------------- | :------ | :------------------------------------------- |
-| `/`           | `GET`          | General | Returns project description.                 |
-| `/users`      | `GET`          | Users   | Returns list of users in `users` table.      |
-| `/users`      | `POST`         | Users   | Creates user in `users` table.               |
-| `/users/:id`  | `GET`          | Users   | Returns user with `id` from `users` table.   |
-| `/users/:id`  | `DELETE`       | Users   | Deletes user with `id` from `users` table.   |
-| `/movies`     | `GET`          | Movies  | Returns list of movies in `movies` table.    |
-| `/movies`     | `POST`         | Movies  | Creates movie in `movies` table.             |
-| `/movies/:id` | `GET`          | Movies  | Returns movie with `id` from `movies` table. |
-| `/movies/:id` | `DELETE`       | Movies  | Deletes movie with `id` from `movies` table. |
+| Route            | Request Method | Group         | Response                                     |
+| :--------------- | :------------- | :------------ | :------------------------------------------- |
+| `/`              | `GET`          | General       | Returns project description.                 |
+| `/auth/register` | `POST`         | Authorization | Creates user in `users` table.               |
+| `/users`         | `GET`          | Users         | Returns list of users in `users` table.      |
+| `/users/:id`     | `GET`          | Users         | Returns user with `id` from `users` table.   |
+| `/users/:id`     | `DELETE`       | Users         | Deletes user with `id` from `users` table.   |
+| `/movies`        | `GET`          | Movies        | Returns list of movies in `movies` table.    |
+| `/movies`        | `POST`         | Movies        | Creates movie in `movies` table.             |
+| `/movies/:id`    | `GET`          | Movies        | Returns movie with `id` from `movies` table. |
+| `/movies/:id`    | `DELETE`       | Movies        | Deletes movie with `id` from `movies` table. |
 
 ### General
-
-Request: `GET`
 
 | Route | Request Method | Response |
 | :---- | :------------- | :------- |
@@ -58,6 +57,21 @@ Example:
 
 ```
 'Movie Library API by Marvin Parada. (https://marvin.dev)'
+```
+
+### Authorization
+
+| Route            | Request Method | Payload  |
+| :--------------- | :------------- | :------- |
+| `/auth/register` | `POST`         | `object` |
+
+Example:
+
+```json
+{
+  "username": "steve",
+  "password": "rogers"
+}
 ```
 
 ### Users
@@ -95,19 +109,6 @@ Example:
     "role": "user"
   }
 ]
-```
-
-| Route    | Request Method | Payload  |
-| :------- | :------------- | :------- |
-| `/users` | `POST`         | `object` |
-
-Example:
-
-```json
-{
-  "username": "steve",
-  "password": "rogers"
-}
 ```
 
 | Route        | Request Method | Response |

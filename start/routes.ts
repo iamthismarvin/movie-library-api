@@ -26,10 +26,14 @@ Route.get('/', () => {
   return 'Movie Library API by Marvin Parada. (https://marvin.dev)'
 })
 
+// Auth
+Route.group(() => {
+  Route.post('/register', 'UsersController.store')
+}).prefix('/auth')
+
 // Users
 Route.group(() => {
   Route.get('/', 'UsersController.index')
-  Route.post('/', 'UsersController.store')
   Route.get('/:id', 'UsersController.show')
   Route.delete('/:id', 'UsersController.destroy')
 }).prefix('/users')
