@@ -84,7 +84,8 @@ Example:
     "updated_at": "2021-05-26T18:22:32.911-07:00",
     "username": "steve",
     "display_name": null,
-    "role": "admusers
+    "role": "admin"
+  },
   {
     "id": 1,
     "created_at": "2021-05-26T16:22:37.205-07:00",
@@ -104,8 +105,8 @@ Example:
 
 ```json
 {
-  "username": string,
-  "password": string,
+  "username": "steve",
+  "password": "rogers"
 }
 ```
 
@@ -140,7 +141,6 @@ Example:
 
 ```json
 [
-  {...},
   {
     "id": 9,
     "created_at": "2021-05-27T19:15:05.154-07:00",
@@ -153,29 +153,19 @@ Example:
       "plot": "It's a whole new world over here",
       "year": 2020,
       "cover": "images/image.png",
-      "genre": [
-        "Action",
-        "Thriller"
-      ],
+      "genre": ["Action", "Thriller"],
       "title": "New World",
-      "actors": [
-        "William Dera",
-        "Audrey Krutz"
-      ],
-      "writer": [
-        "Jordan Moore"
-      ],
-      "director": [
-        "Phillip Wick"
-      ]
+      "actors": ["William Dera", "Audrey Krutz"],
+      "writer": ["Jordan Moore"],
+      "director": ["Phillip Wick"]
     },
     "format": {
       "dvd": false,
       "digital": true,
       "bluray_hd": true,
       "bluray_uhd": true
-    },
-  },
+    }
+  }
 ]
 ```
 
@@ -206,8 +196,8 @@ Example:
     "bluray_uhd": true,
     "dvd": false,
     "digital": true
-  },
-},
+  }
+}
 ```
 
 | Route         | Request Method | Response |
@@ -229,29 +219,19 @@ Example:
     "plot": "It's a whole new world over here",
     "year": 2020,
     "cover": "images/image.png",
-    "genre": [
-      "Action",
-      "Thriller"
-    ],
+    "genre": ["Action", "Thriller"],
     "title": "New World",
-    "actors": [
-      "William Dera",
-      "Audrey Krutz"
-    ],
-    "writer": [
-      "Jordan Moore"
-    ],
-    "director": [
-      "Phillip Wick"
-    ]
+    "actors": ["William Dera", "Audrey Krutz"],
+    "writer": ["Jordan Moore"],
+    "director": ["Phillip Wick"]
   },
   "format": {
     "dvd": false,
     "digital": true,
     "bluray_hd": true,
     "bluray_uhd": true
-  },
-},
+  }
+}
 ```
 
 | Route         | Request Method | Response                                    |
