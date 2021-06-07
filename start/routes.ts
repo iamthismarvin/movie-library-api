@@ -46,6 +46,11 @@ Route.group(() => {
   Route.delete('/:id', 'MoviesController.destroy')
 }).prefix('/movies')
 
+// OpenMovieDatabase
+Route.group(() => {
+  Route.get('/:title', 'OpenMovieDBController.search')
+}).prefix('/search')
+
 // Factories
 Route.group(() => {
   Route.post('/single-user', async () => {
