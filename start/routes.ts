@@ -48,8 +48,9 @@ Route.group(() => {
 
 // OpenMovieDatabase
 Route.group(() => {
-  Route.get('/:title', 'OpenMovieDBController.search')
-}).prefix('/search')
+  Route.get('title/:title', 'OpenMovieDBController.searchByTitle')
+  Route.get('id/:id', 'OpenMovieDBController.searchByID')
+}).prefix('/omdb')
 
 // Factories
 Route.group(() => {

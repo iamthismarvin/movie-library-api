@@ -14,9 +14,24 @@ const searchByTitle = async (title) => {
   }
 }
 
+const searchByID = async (id) => {
+  const query = `${OMDB_API_URL}?i=${id}&apikey=${OMDB_API_KEY}`
+  try {
+    let response = await axios.get(query)
+    return response.data
+  } catch (error) {
+    console.log(error.response.data.Error)
+  }
+}
+
 export default class OpenMovieDBController {
-  public async search({ params }) {
+  public async searchByTitle({ params }) {
     const movies = await searchByTitle(params.title)
+    return movies
+  }
+
+  public async searchByID({ params }) {
+    const movies = await searchByID(params.id)
     return movies
   }
 }
