@@ -12,6 +12,8 @@ export interface Info {
   actors: string[]
   plot: string
   cover: string
+  imdb_id: string
+  type: string
 }
 
 export interface Format {

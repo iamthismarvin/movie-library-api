@@ -10,6 +10,12 @@ export const UserFactory = Factory.define(User, ({ faker }) => {
 }).build()
 
 export const MovieFactory = Factory.define(Movie, ({ faker }) => {
+  const typeGenerator = () => {
+    const type = ['movie', 'series']
+    const max = 1
+    return type[Math.floor(Math.random() * max)]
+  }
+
   return {
     purchased_at: faker.date.past(),
     purchase_location: faker.lorem.word(),
@@ -18,12 +24,14 @@ export const MovieFactory = Factory.define(Movie, ({ faker }) => {
     info: {
       title: faker.lorem.words(),
       year: faker.datatype.number(),
-      genre: faker.datatype.array(),
-      director: faker.datatype.array(),
-      writer: faker.datatype.array(),
-      actors: faker.datatype.array(),
+      genre: faker.datatype.array(3).map((genre) => genre.toString()),
+      director: faker.datatype.array(2).map((genre) => genre.toString()),
+      writer: faker.datatype.array(2).map((genre) => genre.toString()),
+      actors: faker.datatype.array(4).map((genre) => genre.toString()),
       plot: faker.lorem.sentences(),
       cover: faker.image.imageUrl(),
+      imdb_id: faker.lorem.word(),
+      type: typeGenerator(),
     },
     format: {
       bluray_hd: faker.datatype.boolean(),
