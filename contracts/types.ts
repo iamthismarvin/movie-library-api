@@ -22,3 +22,11 @@ export interface Format {
   dvd: boolean
   digital: boolean
 }
+
+export interface MovieFromOMDB {
+  Title: string
+  Year: string | number
+  imdbID: string
+  Type: string
+  Poster: string
+}
