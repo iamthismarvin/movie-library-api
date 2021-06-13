@@ -9,7 +9,10 @@ const searchByTitle = async (title: string) => {
   const query = `${OMDB_API_URL}?s=${title}&apikey=${OMDB_API_KEY}`
   try {
     let response = await axios.get(query)
-    return response.data.Search.filter((m: MovieFromOMDB) => m.Type !== 'game')
+    const movies = response.data.Search
+    if (movies) {
+      return movies.filter((m: MovieFromOMDB) => m.Type !== 'game')
+    }
   } catch (error) {
     console.log(error.response.data.Error)
   }
