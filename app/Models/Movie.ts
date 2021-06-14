@@ -22,6 +22,12 @@ export default class Movie extends BaseModel {
   public libraryID: string
 
   @column()
+  public imdbID: string
+
+  @column()
+  public type: string
+
+  @column()
   public notes: string
 
   @column()

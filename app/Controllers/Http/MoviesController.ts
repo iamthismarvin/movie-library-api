@@ -12,6 +12,8 @@ export default class MoviesController {
       purchased_at: schema.date(),
       purchase_location: schema.string(),
       library_id: schema.string(),
+      imdb_id: schema.string({}, [rules.unique({ table: 'movies', column: 'imdb_id' })]), // MOVE TO PARENT SCOPE
+      type: schema.enum(['movie', 'series']),
       notes: schema.string(),
       info: schema.object().members({
         title: schema.string(),
@@ -22,8 +24,6 @@ export default class MoviesController {
         actors: schema.array().members(schema.string()),
         plot: schema.string(),
         cover: schema.string(),
-        imdb_id: schema.string({}, [rules.unique({ table: 'movies', column: 'imdb_id' })]), // MOVE TO PARENT SCOPE
-        type: schema.enum(['movie', 'series']),
       }),
       format: schema.object().members({
         bluray_hd: schema.boolean(),
@@ -39,6 +39,8 @@ export default class MoviesController {
         purchasedAt: request.input('purchased_at'),
         purchaseLocation: request.input('purchase_location'),
         libraryID: request.input('library_id'),
+        imdbID: request.input('imdb_id'),
+        type: request.input('type'),
         notes: request.input('notes'),
         info: request.input('info'),
         format: request.input('format'),
