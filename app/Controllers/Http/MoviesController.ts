@@ -10,11 +10,11 @@ export default class MoviesController {
   public async store({ request, response }) {
     const addToLibrarySchema = schema.create({
       purchased_at: schema.date(),
-      purchase_location: schema.string(),
-      library_id: schema.string(),
-      imdb_id: schema.string({}, [rules.unique({ table: 'movies', column: 'imdb_id' })]), // MOVE TO PARENT SCOPE
+      purchase_location: schema.string.optional(),
+      library_id: schema.string.optional(),
+      imdb_id: schema.string({}, [rules.unique({ table: 'movies', column: 'imdb_id' })]),
       type: schema.enum(['movie', 'series']),
-      notes: schema.string(),
+      notes: schema.string.optional(),
       info: schema.object().members({
         title: schema.string(),
         year: schema.number(),
@@ -24,6 +24,7 @@ export default class MoviesController {
         actors: schema.array().members(schema.string()),
         plot: schema.string(),
         cover: schema.string(),
+        runtime: schema.string(),
       }),
       format: schema.object().members({
         bluray_hd: schema.boolean(),
@@ -34,7 +35,13 @@ export default class MoviesController {
     })
 
     try {
-      await request.validate({ schema: addToLibrarySchema })
+      await request.validate({
+        schema: addToLibrarySchema,
+        messages: {
+          'required': 'The {{ field }} is required.',
+          'imdb_id.unique': '{{ field }} already exists in library.',
+        },
+      })
       await Movie.create({
         purchasedAt: request.input('purchased_at'),
         purchaseLocation: request.input('purchase_location'),
