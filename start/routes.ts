@@ -42,6 +42,7 @@ Route.group(() => {
 Route.group(() => {
   Route.get('/', 'MoviesController.index')
   Route.post('/', 'MoviesController.store')
+  Route.patch('/:id', 'MoviesController.update')
   Route.get('/:id', 'MoviesController.show')
   Route.delete('/:id', 'MoviesController.destroy')
 }).prefix('/movies')

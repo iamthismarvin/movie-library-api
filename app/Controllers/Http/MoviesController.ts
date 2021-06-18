@@ -62,7 +62,54 @@ export default class MoviesController {
     return movie
   }
 
-  public async update() {}
+  public async update({ request, response, params }) {
+    const updateMovieSchema = schema.create({
+      purchased_at: schema.date.optional(),
+      purchase_location: schema.string.optional(),
+      library_id: schema.string.optional(),
+      imdb_id: schema.string(),
+      type: schema.enum(['movie', 'series']),
+      notes: schema.string.optional(),
+      info: schema.object().members({
+        title: schema.string(),
+        year: schema.number(),
+        genre: schema.array().members(schema.string()),
+        director: schema.array().members(schema.string()),
+        writer: schema.array().members(schema.string()),
+        actors: schema.array().members(schema.string()),
+        plot: schema.string(),
+        cover: schema.string(),
+        runtime: schema.string(),
+      }),
+      format: schema.object().members({
+        bluray_hd: schema.boolean(),
+        bluray_uhd: schema.boolean(),
+        digital: schema.boolean(),
+        dvd: schema.boolean(),
+      }),
+    })
+
+    try {
+      await request.validate({
+        schema: updateMovieSchema,
+        messages: {
+          required: 'The {{ field }} is required.',
+        },
+      })
+      const movie = await Movie.findOrFail(params.id)
+      movie.purchasedAt = request.input('purchased_at')
+      movie.purchaseLocation = request.input('purchase_location')
+      movie.libraryID = request.input('library_id')
+      movie.imdbID = request.input('imdb_id')
+      movie.type = request.input('type')
+      movie.notes = request.input('notes')
+      movie.info = request.input('info')
+      movie.format = request.input('format')
+      movie.save()
+    } catch (error) {
+      response.badRequest(error.messages)
+    }
+  }
 
   public async destroy({ params }) {
     const movie = await Movie.findOrFail(params.id)
