@@ -9,7 +9,7 @@ export default class MoviesController {
 
   public async store({ request, response }) {
     const addToLibrarySchema = schema.create({
-      purchased_at: schema.date(),
+      purchased_at: schema.date.optional(),
       purchase_location: schema.string.optional(),
       library_id: schema.string.optional(),
       imdb_id: schema.string({}, [rules.unique({ table: 'movies', column: 'imdb_id' })]),
